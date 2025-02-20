@@ -1,22 +1,29 @@
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Scanner;
 
 public class GestionUsuarios {
     public static void gestionMenu() throws SQLException{
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
+        String usuario = "";
 
         while (opcion != 3){
-            System.out.println("1 - Logearse");
-            System.out.println("2 - Nuevo usuario");
-            System.out.println("3 - Salir");
+            System.out.print(" 1 - Logearse | ");
+            System.out.print(" 2 - Nuevo usuario | ");
+            System.out.print(" -1 - Salir");
+
             opcion = sc.nextInt();
+
             if (opcion == 1){
-                //método loguearse
-                boolean logeado = existeUsuario();
-                if (logeado) break;
+                //usuario = existeUsuario();
+                if (!usuario.isEmpty()) {
+                    Main.usuario = usuario;
+                    System.out.println("Bienvenido ");
+                    break;
+                } else {
+                    System.out.println("USER NOT FOUND");
+                }
+
             } else if (opcion == 2){
                 //método insertar usuario
             }
@@ -25,8 +32,8 @@ public class GestionUsuarios {
 
     public static boolean existeUsuario() throws SQLException {
         java.sql.Connection con = Main.connection;
-
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Introduce tu usuario:");
         String nombre = sc.nextLine();
         System.out.println("Introduce tu contraseña:");
@@ -40,5 +47,24 @@ public class GestionUsuarios {
         return rs.next();
     }
 
-    public static void
+    public static String insertarUsuario() throws SQLException {
+        Connection con = Main.connection;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce tu nombre");
+        String nombre = sc.nextLine();
+        System.out.println("Introduce tus apellidos");
+        String apelldos = sc.nextLine();
+        System.out.println("Introduce tu contraseña");
+        String contrasenya = sc.nextLine();
+
+        PreparedStatement st = con.prepareStatement("INSERT INTO usuarios (nombre, apellidos, contrasenya) VALUES(?, ?, ?)");
+        st.setString(1, nombre);
+        st.setString(2, apelldos);
+        st.setString(3, contrasenya);
+
+        st.executeUpdate();
+        Main.usuario = nombre;
+        return "";
+    }
 }

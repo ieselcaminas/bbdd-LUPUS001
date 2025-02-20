@@ -33,6 +33,7 @@ public class ConectarSql {
         insertUser();
     }
 
+    //Añadimos el usuario
     public static void insertUser() throws SQLException{
         String sql = "INSERT INTO usuarios (nombre, apellidos) VALUES ('Janet', 'Espinosa')";
         Statement stmt = connection.createStatement();
@@ -47,4 +48,20 @@ public class ConectarSql {
         st.setString(2, "Martínez");
         st.executeUpdate();
     }
+
+     public static void deleteUserPreparedStatement() throws SQLException {
+        PreparedStatement st = null;
+        String sql = "DELETE FROM usuarios WHERE id = ?";
+        st = connection.prepareStatement(sql);
+        st.setInt(1, 5);
+        st.executeUpdate();
+     }
+
+     public static void selectedPrepared() throws SQLException{
+        PreparedStatement st = null;
+        String sql = "SELECT FROM usuarios WHERE id= ?";
+        st = connection.prepareStatement(sql);
+        st.setInt(1, 5);
+        ResultSet rs = st.executeQuery();
+     }
 }
