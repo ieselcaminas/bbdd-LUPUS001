@@ -1,9 +1,12 @@
+package main;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Scanner;
+
+import static main.Main.id_usuario;
 
 public class GestionPosts {
     public static void gestionMenu() throws SQLException {
@@ -63,7 +66,7 @@ public class GestionPosts {
         st.setString(1, texto);
         st.setInt(2, 0);
         st.setDate(3, fecha);
-        st.setInt(4, id_usuario);
+        st.setInt(4, Main.id_usuario);
         st.executeUpdate();
     }
 

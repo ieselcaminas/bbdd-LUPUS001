@@ -1,3 +1,4 @@
+package main;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -5,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     static java.sql.Connection connection;
     static String usuario;
-
+    static int id_usuario = -1;
     public static void main(String[] args) throws SQLException {
         connection = getConnection();
         Scanner sc = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class Main {
     }
 
     public static java.sql.Connection getConnection(){
-        String host = "jbdc:sqlite:src/main/resources/network.sqlite";
+        String host = "jdbc:sqlite:src/main/resources/network.sqlite";
 
         if (connection == null){
             try {

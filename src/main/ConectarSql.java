@@ -1,4 +1,4 @@
-import javax.xml.transform.Result;
+package main;import javax.xml.transform.Result;
 import java.sql.*;
 
 public class ConectarSql {
@@ -30,7 +30,9 @@ public class ConectarSql {
         }
         stmt.close();
 
-        insertUser();
+        insertUser(); /*1*/
+        //insertUserPreparedStatement(); /*2*/
+        //deleteUserPreparedStatement(); /*3*/
     }
 
     //Añadimos el usuario
