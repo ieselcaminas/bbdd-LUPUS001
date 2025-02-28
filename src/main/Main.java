@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     static java.sql.Connection connection;
-    static String usuario;
+    static String usuario = "";
     static int id_usuario = -1;
     public static void main(String[] args) throws SQLException {
         connection = getConnection();
@@ -19,12 +19,15 @@ public class Main {
             System.out.print(" 1 - Usuarios | ");
             System.out.print(" 2 - Posts | ");
             System.out.print(" 3 - Comentarios | ");
-            System.out.print(" -1 - Salir");
+            System.out.println(" -1 - Salir");
             option = sc.nextInt();
             if (option == 1){
                 GestionUsuarios.gestionMenu();
+            }else if (option == 2){
+                GestionPosts.gestionMenu();
+            }else if (option == 3){
+                GestionComentarios.gestionMenu();
             }
-
         }
     }
 

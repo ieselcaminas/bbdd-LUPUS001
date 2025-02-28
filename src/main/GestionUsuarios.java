@@ -12,7 +12,7 @@ public class GestionUsuarios {
         while (opcion != -1){
             System.out.print(" 1 - Logearse | ");
             System.out.print(" 2 - Nuevo usuario | ");
-            System.out.print(" -1 - Salir");
+            System.out.println(" -1 - Salir");
 
             opcion = sc.nextInt();
 
@@ -74,6 +74,6 @@ public class GestionUsuarios {
         st.setString(3, contrasenya);
 
         st.executeUpdate();
-        return "";
+        return nombre;
     }
 }
