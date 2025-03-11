@@ -12,7 +12,9 @@ public class GestionUsuarios {
         while (opcion != -1){
             System.out.print(" 1 - Logearse | ");
             System.out.print(" 2 - Nuevo usuario | ");
+            System.out.print(AnsiColor.RED.getColor());
             System.out.println(" -1 - Salir");
+            System.out.println(AnsiColor.RESET.getColor());
 
             opcion = sc.nextInt();
 

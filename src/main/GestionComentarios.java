@@ -11,8 +11,8 @@ public class GestionComentarios {
         while (opcion != -1){
             System.out.print(AnsiColor.BLACK.getColor());
             System.out.println("1 - Nuevo Comentario | ");
-            System.out.println(AnsiColor.RED.getColor());
-            System.out.println("-1 Salir");
+            System.out.print(AnsiColor.RED.getColor());
+            System.out.print("-1 Salir");
             System.out.println(AnsiColor.RESET.getColor());
             opcion = sc.nextInt();
             if (opcion == 1){

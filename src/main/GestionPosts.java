@@ -15,15 +15,22 @@ public class GestionPosts {
         String usuario = "";
 
         while (opcion != -1){
+            System.out.println(AnsiColor.GREEN.getColor());
             System.out.print(" 1 - Nuevo Post | ");
+            System.out.print(" 2 - Todos los Posts | ");
+            System.out.print(" 3 - Mis Posts | ");
+            System.out.print(AnsiColor.RED.getColor());
             System.out.println(" -1 - Salir");
+            System.out.print(AnsiColor.RESET.getColor());
 
             opcion = sc.nextInt();
 
             if (opcion == 1){
                 newPost();
             } else if (opcion == 2){
-                listarTodosLosPosts();
+                listarTodosLosPostsConComentarios();
+            } else if (opcion == 3){
+                listarTodosMisPosts();
             }
         }
     }
@@ -62,8 +69,8 @@ public class GestionPosts {
         Connection con = Main.connection;
         PreparedStatement st = con.prepareStatement(
                 "SELECT p.id, p.texto, p.likes, p.fecha, u.nombre" +
-                        "FROM posts AS p INNER JOIN usuarios AS u" +
-                        "ON p.id_usuario = u.id WHERE u.id = ?"
+                        " FROM posts AS p INNER JOIN usuarios AS u" +
+                        " ON p.id_usuario = u.id WHERE u.id = ?"
         );
         st.setInt(1, id_usuario);
         ResultSet rs = st.executeQuery();
@@ -83,9 +90,9 @@ public class GestionPosts {
 
         PreparedStatement st = con.prepareStatement(
                 "SELECT c.id, c.texto, c.fecha, u.nombre FROM comentarios as c" +
-                    "INNER JOIN usuarios as u ON c.id_usuario = u.id" +
-                    "INNER JOIN posts as p ON c.id_post = p.id" +
-                    "WHERE p.id = ?"
+                    " INNER JOIN usuarios as u ON c.id_usuario = u.id" +
+                    " INNER JOIN posts as p ON c.id_post = p.id" +
+                    " WHERE p.id = ?"
         );
         st.setInt(1, idPost);
         ResultSet rs = st.executeQuery();

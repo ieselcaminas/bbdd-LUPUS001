@@ -7,28 +7,53 @@ public class Main {
     static java.sql.Connection connection;
     static String usuario = "";
     static int id_usuario = -1;
+
     public static void main(String[] args) throws SQLException {
+        printBanner();
+
         connection = getConnection();
+
+        gestionMenu();
+    }
+
+    private static void gestionMenu() throws SQLException {
         Scanner sc = new Scanner(System.in);
         int option = 0;
 
-        while (option != -1){
-            if (!usuario.isEmpty()){
+        while (option != -1) {
+            if (!usuario.isEmpty()) {
                 System.out.println(usuario + " | ");
             }
+            System.out.println(AnsiColor.GREEN.getColor());
             System.out.print(" 1 - Usuarios | ");
             System.out.print(" 2 - Posts | ");
             System.out.print(" 3 - Comentarios | ");
+            System.out.print(AnsiColor.RED.getColor());
             System.out.println(" -1 - Salir");
+            System.out.println(AnsiColor.RESET.getColor());
             option = sc.nextInt();
-            if (option == 1){
+            if (option == 1) {
                 GestionUsuarios.gestionMenu();
-            }else if (option == 2){
+            } else if (option == 2) {
                 GestionPosts.gestionMenu();
-            }else if (option == 3){
+            } else if (option == 3) {
                 GestionComentarios.gestionMenu();
             }
         }
+    }
+
+    //asci art
+    private static void printBanner(){
+        System.out.println(AnsiColor.BLACK.getColor());
+        System.out.println("\n" +
+                "\n" +
+                " _   _      _ _        __        __         _     _ _ \n" +
+                "| | | | ___| | | ___   \\ \\      / /__  _ __| | __| | |\n" +
+                "| |_| |/ _ \\ | |/ _ \\   \\ \\ /\\ / / _ \\| '__| |/ _` | |\n" +
+                "|  _  |  __/ | | (_) |   \\ V  V / (_) | |  | | (_| |_|\n" +
+                "|_| |_|\\___|_|_|\\___/     \\_/\\_/ \\___/|_|  |_|\\__,_(_)\n" +
+                "\n");
+        System.out.println(AnsiColor.BLUE.getColor());
     }
 
     public static java.sql.Connection getConnection(){
