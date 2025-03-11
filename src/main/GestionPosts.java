@@ -40,8 +40,8 @@ public class GestionPosts {
         //Connection con -> representa una conexión a la base de datos
         //Main.connection -> una conexion que viene del main
         PreparedStatement st = con.prepareStatement(
-                "SELECT p.id, p.texto, p.likes, p.fecha, u.nombre" +
-                    "FROM posts AS p INNER JOIN usuarios AS u" +
+                "SELECT p.id, p.texto, p.likes, p.fecha, u.nombre " +
+                    "FROM posts AS p INNER JOIN usuarios AS u " +
                     "ON p.id_usuario = u.id"
                 );
         ResultSet rs = st.executeQuery();
