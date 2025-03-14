@@ -10,7 +10,7 @@ public class GestionComentarios {
         int opcion = 0;
         while (opcion != -1){
             System.out.print(AnsiColor.BLACK.getColor());
-            System.out.println("1 - Nuevo Comentario | ");
+            System.out.print("1 - Nuevo Comentario | ");
             System.out.print(AnsiColor.RED.getColor());
             System.out.print("-1 Salir");
             System.out.println(AnsiColor.RESET.getColor());
