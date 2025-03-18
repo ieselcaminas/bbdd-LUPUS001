@@ -27,7 +27,7 @@ public class GestionUsuariosComentado {
             if (opcion == 1){
                 usuario = existeUsuario();
                 if (!usuario.isEmpty()) {
-                    Main.usuario = usuario;
+                    MainComentado.usuario = usuario;
                     System.out.println("Bienvenido ");
                     break;
                 } else {
@@ -37,14 +37,14 @@ public class GestionUsuariosComentado {
             } else if (opcion == 2){
                 //método insertar usuario
                 usuario = insertarUsuario();
-                Main.usuario = usuario;
+                MainComentado.usuario = usuario;
                 break;
             }
         }
     }
 
     public static String existeUsuario() throws SQLException {
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduce tu usuario:");
@@ -59,14 +59,14 @@ public class GestionUsuariosComentado {
         ResultSet rs = st.executeQuery();
 
         if (rs.next()){
-            Main.id_usuario = rs.getInt(1);
+            MainComentado.id_usuario = rs.getInt(1);
             return rs.getString(2);
         }
         return "";
     }
 
     public static String insertarUsuario() throws SQLException {
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce tu nombre");

@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Scanner;
-
-import static main.Main.id_usuario;
+import static main.estudiar_codigoComentado.MainComentado.id_usuario;
 
 public class GestionPostsComentado {
     public static void gestionMenu() throws SQLException {
