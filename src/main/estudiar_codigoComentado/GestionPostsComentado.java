@@ -41,7 +41,7 @@ public class GestionPostsComentado {
     }
 
     public static void listarTodosLosPosts() throws SQLException{//importante recordar el poner el throws SQLException por los datos con los que estamos trabajando
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
         //Connection con -> representa una conexión a la base de datos
         //Main.connection -> una conexion que viene del main
         PreparedStatement st = con.prepareStatement(
@@ -58,7 +58,7 @@ public class GestionPostsComentado {
     }
 
     public static void listarTodosLosPostsConComentarios() throws SQLException{
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
         PreparedStatement st = con.prepareStatement("SELECT * FROM posts");
         ResultSet rs = st.executeQuery();
 
@@ -71,7 +71,7 @@ public class GestionPostsComentado {
     }
 
     public static void listarTodosMisPosts() throws SQLException{
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
         PreparedStatement st = con.prepareStatement(
                 "SELECT p.id, p.texto, p.likes, p.fecha, u.nombre" +
                         " FROM posts AS p INNER JOIN usuarios AS u" +
@@ -91,7 +91,7 @@ public class GestionPostsComentado {
     }
 
     public static void printComments(int idPost) throws SQLException{
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
 
         PreparedStatement st = con.prepareStatement(
                 "SELECT c.id, c.texto, c.fecha, u.nombre FROM comentarios as c" +
@@ -109,12 +109,12 @@ public class GestionPostsComentado {
 
     //en este método le pediremos al usuario los datos que introduciremos al post, utilizando un Scanner
     public static void newPost() throws SQLException{
-        if (Main.id_usuario == -1){
+        if (MainComentado.id_usuario == -1){
             GestionUsuarios.gestionMenu();
             return;
         }
 
-        Connection con = Main.connection;
+        Connection con = MainComentado.connection;
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el texto");
         String texto = sc.nextLine();
@@ -123,7 +123,7 @@ public class GestionPostsComentado {
         st.setString(1, texto);
         st.setInt(2, 0);
         st.setDate(3, fecha);
-        st.setInt(4, Main.id_usuario);
+        st.setInt(4, MainComentado.id_usuario);
         st.executeUpdate();
     }
 }
