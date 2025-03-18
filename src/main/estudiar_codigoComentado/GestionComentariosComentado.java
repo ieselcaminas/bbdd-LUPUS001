@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class GestionComentariosComentado {
     public static void gestionMenu() throws SQLException{
         Scanner sc = new Scanner(System.in);
-        int opcion = 0;
+        int opcion = 0; // esto sera la opcion que elegira el usuario, como aun no ha ingresado el número lo inicializamos en 0
         while (opcion != -1){
             System.out.print(AnsiColor.BLACK.getColor());//Usando ANSI cambiaremos los colores de la salida
             System.out.print("1 - Nuevo Comentario | ");//si aprieta el 1, llamará al metodo newComment...*1
