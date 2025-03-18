@@ -82,14 +82,14 @@ public class GestionComentariosComentado {
     }
 
     private static int getPost() throws SQLException{
-        GestionPosts.listarTodosLosPosts();
-        Scanner sc = new Scanner(System.in);
-        return sc.nextInt();
+        GestionPosts.listarTodosLosPosts();//muestra todos los posts
+        Scanner sc = new Scanner(System.in);//pide al usuario que seleccione el ID de un post
+        return sc.nextInt(); //devuelve el número ingresado
     }
 
-    public static void printComment(ResultSet rs) throws SQLException{
-        System.out.println("\t\t\t" + rs.getString(2) +
-                " - " + rs.getDate(3) +
-                " - " + rs.getString(4));
+    public static void printComment(ResultSet rs) throws SQLException{//Recibe cómo párametro un ResultSet
+        System.out.println("\t\t\t" + rs.getString(2) +//Texto del comentario
+                " - " + rs.getDate(3) + //Fecha del comentario
+                " - " + rs.getString(4)); //ID del usuario que hizo el comentario
     }
 }
